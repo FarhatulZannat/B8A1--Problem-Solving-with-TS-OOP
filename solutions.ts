@@ -1,5 +1,4 @@
 
-
 function multiplyValue(value: number, multiplier: number = 2) : number{
     return value * multiplier
 }
@@ -10,11 +9,12 @@ function multiplyValue(value: number, multiplier: number = 2) : number{
 function processInput (value: string | number | boolean) : string | number {
     if (typeof value === 'string') {
         return value.trim().toLowerCase()
+
     }else if (typeof  value === "number") {
          return  value * 10
     }
     else {
-        return value ? "Active" : "Inactive"
+        return value ? "Active" : "Inactive";
     }
 }
 
@@ -28,12 +28,13 @@ const formatCoordinate = (coordinate: readonly [number, number, string]) : strin
 
 
 
+
 function concatenateArrays<T>(...arrays: T[][]): T[] {
-    const combinedArray: T[] = []
+    const combined: T[] = []
     for (const array of arrays) {
-        combinedArray.push(...array)
+        combined.push(...array)
     }
-    return combinedArray
+    return combined
 }
 
 
@@ -45,34 +46,39 @@ interface Course {
     isPublished: boolean
 }
 function getPopularCourses (courses: Course[], minStudents: number) : Course[] {
+
     return courses.filter((course : Course) => course.isPublished === true && course.students >= minStudents)
 }
 
 
 
 
-
 function pluckValues <T, K extends keyof T>(items: T[], key: K ): T[K][]  {
+
     return items.map((item: T): T[K] => item[key])
 }
 
 
 
 
-
 class Employee {
-    constructor(protected name: string,  private baseSalary: number ) {
-    }
-    getDetails(){
+    constructor(
+        protected name: string,
+        private baseSalary: number ) {}
+    getDetails(): string{
         return `Employee: ${this.name}, Base Salary: ${this.baseSalary}`
     }
 }
 
-class Manager extends Employee{
-constructor( name: string,  baseSalary: number, private department: string ) {
+class Manager extends Employee {
+constructor(
+    name: string,
+    baseSalary: number,
+    private department: string ) {
+
     super(name, baseSalary);
 }
-    getRoleInfo(){
+    getRoleInfo(): string{
     return `Manager of ${this.department}: ${this.name}`
     }
 }
@@ -81,6 +87,7 @@ constructor( name: string,  baseSalary: number, private department: string ) {
 
 
 async function validateAgeAsync(age: number): Promise<string> {
+
   if (age < 18) {
     throw new Error ("Access Denied: Must be 18 or older")
   }
@@ -90,5 +97,7 @@ async function validateAgeAsync(age: number): Promise<string> {
   })
   return "Access Granted"
 }
+
+
 
 
